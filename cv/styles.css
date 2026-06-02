@@ -1,0 +1,81 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Georgia, serif;
+  color: #111;
+  background: white;
+  line-height: 1.5;
+}
+
+a {
+  color: #000;
+}
+
+.container {
+  max-width: 850px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+h1 {
+  font-size: 32px;
+  letter-spacing: 2px;
+}
+
+.contact {
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+section {
+  margin-bottom: 25px;
+}
+
+h2 {
+  font-size: 14px;
+  letter-spacing: 1px;
+  border-bottom: 1px solid #000;
+  padding-bottom: 5px;
+  margin-bottom: 10px;
+}
+
+.item {
+  margin-bottom: 15px;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+}
+
+ul {
+  margin-left: 20px;
+}
+
+li {
+  margin-bottom: 5px;
+}
+
+.skills p {
+  margin-bottom: 5px;
+}
+
+@media print {
+  body {
+    font-size: 11pt;
+  }
+
+  .container {
+    max-width: 100%;
+  }
+}
