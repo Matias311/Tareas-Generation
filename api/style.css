@@ -1,0 +1,22 @@
+body {
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+
+  & header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  & main {
+    padding: 1rem;
+    & section {
+      display: flex;
+      justify-content: space-evenly;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+  }
+}
