@@ -31,7 +31,7 @@ public class JsToJava {
       System.out.println("Ingrese un numero");
       String value = sc.nextLine();
 
-      if (value.matches("^-?\\d+$")) {
+      if (value.matches("-?\\d+(\\.\\d+)?")) {
         return Integer.parseInt(value);
       } else {
         System.out.println("Debe ingresar un numero valido");
