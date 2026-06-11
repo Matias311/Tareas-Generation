@@ -7,6 +7,7 @@ public class RegistroProductos {
 
   public static void main(String[] args) {
     List<String> productos = new ArrayList<>();
+
     Scanner sc = new Scanner(System.in);
     System.out.println("Ingrese la cantidad de productos a guardar");
     int cantidad = sc.nextInt();
