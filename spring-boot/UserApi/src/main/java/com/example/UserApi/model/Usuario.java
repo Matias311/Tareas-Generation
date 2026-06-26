@@ -5,10 +5,6 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.Max;
-import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Size;
 
 /** UsuarioModel. */
 @Entity
@@ -18,16 +14,8 @@ public class Usuario {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
-  @NotBlank(message = "El nombre del usuario no puede estar vacio")
-  @Size(min = 2, max = 100, message = "El nombre no puede superar los 100 caracteres")
   private String nombre;
-
-  @NotBlank(message = "El apellido del usuario no puede estar vacio")
-  @Size(min = 2, max = 100, message = "El apellido no puede superar los 100 caracteres")
   private String apellido;
-
-  @Max(value = 100, message = "La edad maxima es de 100 años")
-  @Min(value = 5, message = "La edad minima es de 10 años")
   private int edad;
 
   public Usuario() {}

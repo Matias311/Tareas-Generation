@@ -1,10 +1,12 @@
 package com.example.UserApi.controller;
 
+import com.example.UserApi.dto.UsuarioDTO;
 import com.example.UserApi.exception.exceptionhandler.ResourceNotFoundException;
-import com.example.UserApi.model.Usuario;
 import com.example.UserApi.service.UsuarioService;
 import jakarta.validation.Valid;
 import java.util.List;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -26,35 +28,37 @@ public class UsuarioController {
   }
 
   @GetMapping("/")
-  public List<Usuario> listar() {
-    return service.getAll();
+  public ResponseEntity<List<UsuarioDTO>> listar() {
+    return ResponseEntity.ok(service.getAll());
   }
 
   @PostMapping("/save")
-  public Usuario crear(@Valid @RequestBody Usuario model) {
-    return service.guardar(model);
+  public ResponseEntity<UsuarioDTO> crear(@Valid @RequestBody UsuarioDTO model) {
+    return new ResponseEntity<>(service.guardar(model), HttpStatus.CREATED);
   }
 
   @GetMapping("/{id}")
-  public Usuario obtener(@PathVariable Long id) {
-    return service.buscarPorId(id);
+  public ResponseEntity<UsuarioDTO> obtener(@PathVariable Long id) {
+    return ResponseEntity.ok(service.buscarPorId(id));
   }
 
   @PutMapping("/{id}")
-  public Usuario actualizar(@PathVariable Long id, @Valid @RequestBody Usuario entity) {
+  public ResponseEntity<UsuarioDTO> actualizar(
+      @PathVariable Long id, @Valid @RequestBody UsuarioDTO entity) {
     if (id < 0) {
       throw new ResourceNotFoundException("No se puede utiliza un id < 0");
     }
-    entity.setId(id);
-    return service.guardar(entity);
+
+    return new ResponseEntity<UsuarioDTO>(service.actualizar(id, entity), HttpStatus.OK);
   }
 
   @DeleteMapping("/{id}")
-  public void eliminar(@PathVariable Long id) {
+  public HttpStatus eliminar(@PathVariable Long id) {
     if (id < 0) {
       throw new ResourceNotFoundException("No se puede utiliza un id < 0");
     }
 
     service.eliminar(id);
+    return HttpStatus.OK;
   }
 }
